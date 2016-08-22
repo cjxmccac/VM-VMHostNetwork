@@ -9,6 +9,6 @@ $hosts = Get-VMHost | where {$_.PowerState -eq "PoweredOn" }
 $vm = Get-VM -Name $vmname
 foreach ($objHost in $hosts) {
     Move-VM -VM $vm -Destination (Get-VMHost $objHost.name)
+    echo $objHost.name
     Start-Sleep -Seconds 8
 }
-# Get-VM -Location "HostName" | Move-VM -Destination (Get-Vmhost "NewHost")
